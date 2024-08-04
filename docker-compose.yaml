@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  forecast_idr_ols:
+    build:
+      context: ./forecast_idr_ols
+      dockerfile: Dockerfile
+    container_name: forecast_idr_ols_container
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    command: python -m forecast_idr_ols.forecast_idr_ols
+
+  forecast_idr_rf:
+    build:
+      context: ./forecast_idr_rf
+      dockerfile: Dockerfile
+    container_name: forecast_idr_rf_container
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    command: python -m forecast_idr_rf.forecast_idr_rf
